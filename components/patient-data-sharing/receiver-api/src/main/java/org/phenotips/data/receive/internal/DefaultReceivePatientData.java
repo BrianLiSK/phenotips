@@ -401,7 +401,7 @@ public class DefaultReceivePatientData implements ReceivePatientData
                 return generateIncompatibleVersionResponse();
             }
 
-            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME);
+            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME).trim();
             String token = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USER_TOKEN);
 
             if (userName == null) {
@@ -462,7 +462,7 @@ public class DefaultReceivePatientData implements ReceivePatientData
                 return loginError;
             }
 
-            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME);
+            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME).trim();
             String groupName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_GROUPNAME);
             if (groupName != null && !isValidUserGroup(userName, groupName)) {
                 this.logger.warn("Incorrect group name provided by {}", request.getRemoteAddr());
@@ -633,7 +633,7 @@ public class DefaultReceivePatientData implements ReceivePatientData
                 return loginError;
             }
 
-            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME);
+            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME).trim();
             Set<Group> userGroups = this.groupManager.getGroupsForUser(this.userManager.getUser(userName));
             JSONArray groupList = new JSONArray();
             for (Group g : userGroups) {
@@ -689,7 +689,7 @@ public class DefaultReceivePatientData implements ReceivePatientData
                 return loginError;
             }
 
-            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME);
+            String userName = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_USERNAME).trim();
             String guid = request.getParameter(ShareProtocol.CLIENT_POST_KEY_NAME_GUID);
 
             if (userName == null || guid == null) {
